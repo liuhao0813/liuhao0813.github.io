@@ -3,19 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>categories | 猿猿猿博客</title>
+    <title>Keytools使用 | 猿猿猿博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="如果你不能简单的解释某件事，那是你没有真正的理解">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://digierp.com/categories/index.html">
+    <meta name="description" content="KeyTools使用 生成keystorekeytool -genkeypair -keyalg RSA -keysize 2048 -sigalg SHA1withRSA -validity 36500 -alias ovn.sso.com -keystore d:/tomcat.keystore -dname &amp;quot;CN=ovn.sso.com,OU=kawhi,O=carl,L=Gua">
+<meta name="keywords" content="HTTPS,CAS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Keytools使用">
+<meta property="og:url" content="http://digierp.com/2017/10/13/Keytools使用/index.html">
 <meta property="og:site_name" content="猿猿猿博客">
-<meta property="og:description" content="如果你不能简单的解释某件事，那是你没有真正的理解">
+<meta property="og:description" content="KeyTools使用 生成keystorekeytool -genkeypair -keyalg RSA -keysize 2048 -sigalg SHA1withRSA -validity 36500 -alias ovn.sso.com -keystore d:/tomcat.keystore -dname &amp;quot;CN=ovn.sso.com,OU=kawhi,O=carl,L=Gua">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-09T03:05:36.000Z">
+<meta property="og:image" content="https://www.apereo.org/sites/default/files/styles/project_logo/public/projects/logos/cas_max_logo_0.png?itok=uD4hQ5-h">
+<meta property="og:updated_time" content="2017-10-13T15:25:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="如果你不能简单的解释某件事，那是你没有真正的理解">
+<meta name="twitter:title" content="Keytools使用">
+<meta name="twitter:description" content="KeyTools使用 生成keystorekeytool -genkeypair -keyalg RSA -keysize 2048 -sigalg SHA1withRSA -validity 36500 -alias ovn.sso.com -keystore d:/tomcat.keystore -dname &amp;quot;CN=ovn.sso.com,OU=kawhi,O=carl,L=Gua">
+<meta name="twitter:image" content="https://www.apereo.org/sites/default/files/styles/project_logo/public/projects/logos/cas_max_logo_0.png?itok=uD4hQ5-h">
     
 
     
@@ -210,18 +213,45 @@
 </aside>
 
             
-            <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Keytools使用" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
+        
+            
+	
+		<img src="https://user-images.githubusercontent.com/5961039/31553635-acf840d6-b06d-11e7-8d2b-151eb2603f83.png" class="article-banner" />
+	
+
+
+
         
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-            categories
+            Keytools使用
         </h1>
     
 
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/13/Keytools使用/">
+            <time datetime="2017-10-13T15:20:16.000Z" itemprop="datePublished">2017-10-13</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/HTTPS-CAS/">HTTPS,CAS</a>
+    </div>
+
+                    </div>
                 
             </header>
         
@@ -229,7 +259,20 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            
+            <h3 id="KeyTools使用"><a href="#KeyTools使用" class="headerlink" title="KeyTools使用"></a>KeyTools使用</h3><ol>
+<li>生成keystore<br><code>keytool -genkeypair -keyalg RSA -keysize 2048 -sigalg SHA1withRSA -validity 36500 -alias ovn.sso.com -keystore d:/tomcat.keystore -dname &quot;CN=ovn.sso.com,OU=kawhi,O=carl,L=GuangZhou,ST=GuangDong,C=CN&quot;</code></li>
+<li>生成证书<br><code>keytool -exportcert -alias ovn.sso.com -keystore d:/tomcat.keystore  -file d:/tomcat.cer -rfc</code></li>
+<li>导入证书<br><code>keytool -importcert -alias ovn.sso.com -keystore &quot;%JAVA_HOME%\jre\lib\security\cacerts&quot; -file d:/tomcat.cer -trustcacerts</code></li>
+<li>注意导入证书的密码是changeit</li>
+</ol>
+<p><code>keytool -importcert -alias ovn.sso.com -keystore &quot;D:\Program Files\Java\jre1.8.0_144\lib\security\cacerts&quot; -file d:/tomcat.cer -trustcacerts</code></p>
+<ol>
+<li><p>查看证书<br><code>keytool -list -keystore &quot;%JAVA_HOME%\jre\lib\security\cacerts&quot; | findstr/i server</code></p>
+</li>
+<li><p>删除证书<br><code>keytool -delete -alias passport.sso.com -keystore &quot;%JAVA_HOME%\jre\lib\security\cacerts&quot;</code><br><code>keytool -delete -alias ovn.sso.com -keystore &quot;D:\Program Files\Java\jre1.8.0_144\lib\security\cacerts&quot;</code></p>
+</li>
+</ol>
+
         
         </div>
         <footer class="article-footer">
@@ -239,7 +282,7 @@
 
 </div>
 
-    <a data-url="http://digierp.com/categories/index.html" data-id="cj8q1o9ir00077l1odmmeu00z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://digierp.com/2017/10/13/Keytools使用/" data-id="cj8q1o9im00037l1ocnunb9sj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -307,13 +350,23 @@
 
             
     
-        <a href="http://digierp.com/categories/index.html#comments" id="sourceId::categories/index.html" class="article-comment-link cy_cmt_count">评论</a>
+        <a href="http://digierp.com/2017/10/13/Keytools使用/#comments" id="sourceId::2017/10/13/Keytools使用/" class="article-comment-link cy_cmt_count">评论</a>
     
 
         </footer>
     </div>
     
         
+<nav id="article-nav">
+    
+    
+        <a href="/2017/10/13/centos7最小安装找不到ifconfig/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">centos7最小安装找不到ifconfig</div>
+        </a>
+    
+</nav>
+
 
     
 </article>
@@ -322,7 +375,7 @@
     
     
         <section id="comments">
-    <div id="SOHUCS" sid="categories/index.html"></div>
+    <div id="SOHUCS" sid="2017/10/13/Keytools使用/"></div>
 </section>
     
 

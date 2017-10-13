@@ -3,19 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>categories | 猿猿猿博客</title>
+    <title>Centos7安装Mysql数据库 | 猿猿猿博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="如果你不能简单的解释某件事，那是你没有真正的理解">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://digierp.com/categories/index.html">
+    <meta name="description" content="修改centos7的yum源​    以下内容，纯属个人笔记，如有问题，欢迎指正，237594169@qq.com  复制/etc/yum.repos.d/Centos-Base.repo文件为Centos-aliyun.repo文件  使用喜欢的编辑器打开，进行编辑，注释所有的mirrorlist属性，放开baseurl，将baseurl修改为阿里云的yum源，这个地址可能有变动，亲自行百度，我">
+<meta name="keywords" content="Centos7,数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos7安装Mysql数据库">
+<meta property="og:url" content="http://digierp.com/2017/10/13/Centos7安装Mysql数据库/index.html">
 <meta property="og:site_name" content="猿猿猿博客">
-<meta property="og:description" content="如果你不能简单的解释某件事，那是你没有真正的理解">
+<meta property="og:description" content="修改centos7的yum源​    以下内容，纯属个人笔记，如有问题，欢迎指正，237594169@qq.com  复制/etc/yum.repos.d/Centos-Base.repo文件为Centos-aliyun.repo文件  使用喜欢的编辑器打开，进行编辑，注释所有的mirrorlist属性，放开baseurl，将baseurl修改为阿里云的yum源，这个地址可能有变动，亲自行百度，我">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-09T03:05:36.000Z">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507917773449&di=15898de901f0d997f0e05ccc56c39b22&imgtype=0&src=http%3A%2F%2Fimages.liqucn.com%2Fh018%2Fh88%2Fimg201411221428360219_info300X300.png">
+<meta property="og:updated_time" content="2017-10-13T15:15:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="如果你不能简单的解释某件事，那是你没有真正的理解">
+<meta name="twitter:title" content="Centos7安装Mysql数据库">
+<meta name="twitter:description" content="修改centos7的yum源​    以下内容，纯属个人笔记，如有问题，欢迎指正，237594169@qq.com  复制/etc/yum.repos.d/Centos-Base.repo文件为Centos-aliyun.repo文件  使用喜欢的编辑器打开，进行编辑，注释所有的mirrorlist属性，放开baseurl，将baseurl修改为阿里云的yum源，这个地址可能有变动，亲自行百度，我">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507917773449&di=15898de901f0d997f0e05ccc56c39b22&imgtype=0&src=http%3A%2F%2Fimages.liqucn.com%2Fh018%2Fh88%2Fimg201411221428360219_info300X300.png">
     
 
     
@@ -210,18 +213,45 @@
 </aside>
 
             
-            <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Centos7安装Mysql数据库" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
+        
+            
+	
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507917773450&di=38df5fb4ba55c11331fc0043188ef37f&imgtype=0&src=http%3A%2F%2Fimg.educity.cn%2Fimg_19%2F2014052617%2F4310172953.jpg" class="article-banner" />
+	
+
+
+
         
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-            categories
+            Centos7安装Mysql数据库
         </h1>
     
 
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/13/Centos7安装Mysql数据库/">
+            <time datetime="2017-10-13T15:13:57.000Z" itemprop="datePublished">2017-10-13</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Centos7-数据库/">Centos7,数据库</a>
+    </div>
+
+                    </div>
                 
             </header>
         
@@ -229,7 +259,22 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            
+            <h2 id="修改centos7的yum源"><a href="#修改centos7的yum源" class="headerlink" title="修改centos7的yum源"></a>修改centos7的yum源</h2><p>​    以下内容，纯属个人笔记，如有问题，欢迎指正，237594169@qq.com</p>
+<ol>
+<li><p>复制/etc/yum.repos.d/Centos-Base.repo文件为Centos-aliyun.repo文件</p>
+</li>
+<li><p>使用喜欢的编辑器打开，进行编辑，注释所有的mirrorlist属性，放开baseurl，将baseurl修改为阿里云的yum源，这个地址可能有变动，亲自行百度，我使用的时候是<a href="http://mirrors.aliyun.com/centos" target="_blank" rel="external">http://mirrors.aliyun.com/centos</a></p>
+<p>注意：在[aliyun]这个节点下，需要配置enabled=1生效，否则不生效</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"># The mirror system uses the connecting IP address of the client and the</div><div class="line"># update status of each mirror to pick mirrors that are updated to and</div><div class="line"># geographically close to the client.  You should use this for CentOS updates</div><div class="line"># unless you are manually picking other mirrors.</div><div class="line">#</div><div class="line"># If the mirrorlist= does not work for you, as a fall back you can try the</div><div class="line"># remarked out baseurl= line instead.</div><div class="line">#</div><div class="line">#</div><div class="line"></div><div class="line">[Aliyun]</div><div class="line">name=CentOS-$releasever - Aliyun</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/</div><div class="line">enabled=1</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</div><div class="line"></div><div class="line">#released updates</div><div class="line">[updates]</div><div class="line">name=CentOS-$releasever - Updates</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/updates/$basearch/</div><div class="line">gpgcheck=1</div><div class="line">#additional packages that may be useful</div><div class="line">[extras]</div><div class="line">name=CentOS-$releasever - Extras</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/extras/$basearch/</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</div><div class="line"></div><div class="line">#additional packages that extend functionality of existing packages</div><div class="line">[centosplus]</div><div class="line">name=CentOS-$releasever - Plus</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/centosplus/$basearch/</div><div class="line">gpgcheck=1</div><div class="line">enabled=0</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</div></pre></td></tr></table></figure>
+<ol>
+<li><p>修改完成后使用yum repolist endabled进行验证，结果如下图表示设置成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost yum.repos.d]# yum repolist enabled</div><div class="line">Loaded plugins: fastestmirror</div><div class="line">Repository updates is listed more than once in the configuration</div><div class="line">Repository extras is listed more than once in the configuration</div><div class="line">Repository centosplus is listed more than once in the configuration</div><div class="line">Loading mirror speeds from cached hostfile</div><div class="line"> * base: mirrors.aliyun.com</div><div class="line">repo id                             repo name                             status</div><div class="line">Aliyun/7/x86_64                     CentOS-7 - Aliyun                     9,591</div><div class="line">base/7/x86_64                       CentOS-7 - Base                       9,591</div><div class="line">extras/7/x86_64                     CentOS-7 - Extras                       227</div><div class="line">updates/7/x86_64                    CentOS-7 - Updates                      731</div><div class="line">repolist: 20,140</div><div class="line">[root@localhost yum.repos.d]#</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>​</p>
+
         
         </div>
         <footer class="article-footer">
@@ -239,7 +284,7 @@
 
 </div>
 
-    <a data-url="http://digierp.com/categories/index.html" data-id="cj8q1o9ir00077l1odmmeu00z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://digierp.com/2017/10/13/Centos7安装Mysql数据库/" data-id="cj8q1o9if00017l1ohxtc0qzq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -307,13 +352,32 @@
 
             
     
-        <a href="http://digierp.com/categories/index.html#comments" id="sourceId::categories/index.html" class="article-comment-link cy_cmt_count">评论</a>
+        <a href="http://digierp.com/2017/10/13/Centos7安装Mysql数据库/#comments" id="sourceId::2017/10/13/Centos7安装Mysql数据库/" class="article-comment-link cy_cmt_count">评论</a>
     
 
         </footer>
     </div>
     
         
+<nav id="article-nav">
+    
+        <a href="/2017/10/13/centos7最小安装找不到ifconfig/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    centos7最小安装找不到ifconfig
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/10/13/修改centos7的yum源/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">修改centos7的yum源</div>
+        </a>
+    
+</nav>
+
 
     
 </article>
@@ -322,7 +386,7 @@
     
     
         <section id="comments">
-    <div id="SOHUCS" sid="categories/index.html"></div>
+    <div id="SOHUCS" sid="2017/10/13/Centos7安装Mysql数据库/"></div>
 </section>
     
 

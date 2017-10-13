@@ -157,11 +157,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                2
+                5
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                1
+                4
                 <span>标签</span>
             </div>
         </div>
@@ -210,6 +210,602 @@
 
             
             <section id="main">
+    <article id="post-Keytools使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<a href="/2017/10/13/Keytools使用/" itemprop="url">
+            <img src="https://user-images.githubusercontent.com/5961039/31553635-acf840d6-b06d-11e7-8d2b-151eb2603f83.png" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/13/Keytools使用/">Keytools使用</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/13/Keytools使用/">
+            <time datetime="2017-10-13T15:20:16.000Z" itemprop="datePublished">2017-10-13</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/HTTPS-CAS/">HTTPS,CAS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="KeyTools使用"><a href="#KeyTools使用" class="headerlink" title="KeyTools使用"></a>KeyTools使用</h3><ol>
+<li>生成keystore<br><code>keytool -genkeypair -keyalg RSA -keysize 2048 -sigalg SHA1withRSA -validity 36500 -alias ovn.sso.com -keystore d:/tomcat.keystore -dname &quot;CN=ovn.sso.com,OU=kawhi,O=carl,L=GuangZhou,ST=GuangDong,C=CN&quot;</code></li>
+<li>生成证书<br><code>keytool -exportcert -alias ovn.sso.com -keystore d:/tomcat.keystore  -file d:/tomcat.cer -rfc</code></li>
+<li>导入证书<br><code>keytool -importcert -alias ovn.sso.com -keystore &quot;%JAVA_HOME%\jre\lib\security\cacerts&quot; -file d:/tomcat.cer -trustcacerts</code></li>
+<li>注意导入证书的密码是changeit</li>
+</ol>
+<p><code>keytool -importcert -alias ovn.sso.com -keystore &quot;D:\Program Files\Java\jre1.8.0_144\lib\security\cacerts&quot; -file d:/tomcat.cer -trustcacerts</code></p>
+<ol>
+<li><p>查看证书<br><code>keytool -list -keystore &quot;%JAVA_HOME%\jre\lib\security\cacerts&quot; | findstr/i server</code></p>
+</li>
+<li><p>删除证书<br><code>keytool -delete -alias passport.sso.com -keystore &quot;%JAVA_HOME%\jre\lib\security\cacerts&quot;</code><br><code>keytool -delete -alias ovn.sso.com -keystore &quot;D:\Program Files\Java\jre1.8.0_144\lib\security\cacerts&quot;</code></p>
+</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://digierp.com/2017/10/13/Keytools使用/" data-id="cj8q1o9im00037l1ocnunb9sj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://digierp.com/2017/10/13/Keytools使用/#comments" id="sourceId::2017/10/13/Keytools使用/" class="article-comment-link cy_cmt_count">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-centos7最小安装找不到ifconfig" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<a href="/2017/10/13/centos7最小安装找不到ifconfig/" itemprop="url">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507917979022&di=2c1504c079ac6e1ec1599f25622adeeb&imgtype=0&src=http%3A%2F%2Fwww.linuxprobe.com%2Fwp-content%2Fuploads%2F2015%2F12%2Fsmall-CentOS_AltArch_71511.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/13/centos7最小安装找不到ifconfig/">centos7最小安装找不到ifconfig</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/13/centos7最小安装找不到ifconfig/">
+            <time datetime="2017-10-13T15:16:27.000Z" itemprop="datePublished">2017-10-13</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Centos7/">Centos7</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="centos7最小安装找不到ifconfig"><a href="#centos7最小安装找不到ifconfig" class="headerlink" title="centos7最小安装找不到ifconfig"></a>centos7最小安装找不到ifconfig</h2><ol>
+<li><p>电脑能上网请使用yum的方式直接安装</p>
+<p><code>yum install -y net-tools</code></p>
+</li>
+<li><p>如果电脑不能上网，请使用安装盘挂载的方式安装，或是使用U盘。找到这个安装包，可以安装这个工具</p>
+</li>
+<li><p>具体的安装请参见对应的安装方法，如果是rpm包，请查rpm命令</p>
+</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://digierp.com/2017/10/13/centos7最小安装找不到ifconfig/" data-id="cj8q1sjtp0000in1o98ii1enx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://digierp.com/2017/10/13/centos7最小安装找不到ifconfig/#comments" id="sourceId::2017/10/13/centos7最小安装找不到ifconfig/" class="article-comment-link cy_cmt_count">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Centos7安装Mysql数据库" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<a href="/2017/10/13/Centos7安装Mysql数据库/" itemprop="url">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507917773450&di=38df5fb4ba55c11331fc0043188ef37f&imgtype=0&src=http%3A%2F%2Fimg.educity.cn%2Fimg_19%2F2014052617%2F4310172953.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/13/Centos7安装Mysql数据库/">Centos7安装Mysql数据库</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/13/Centos7安装Mysql数据库/">
+            <time datetime="2017-10-13T15:13:57.000Z" itemprop="datePublished">2017-10-13</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Centos7-数据库/">Centos7,数据库</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="修改centos7的yum源"><a href="#修改centos7的yum源" class="headerlink" title="修改centos7的yum源"></a>修改centos7的yum源</h2><p>​    以下内容，纯属个人笔记，如有问题，欢迎指正，237594169@qq.com</p>
+<ol>
+<li><p>复制/etc/yum.repos.d/Centos-Base.repo文件为Centos-aliyun.repo文件</p>
+</li>
+<li><p>使用喜欢的编辑器打开，进行编辑，注释所有的mirrorlist属性，放开baseurl，将baseurl修改为阿里云的yum源，这个地址可能有变动，亲自行百度，我使用的时候是<a href="http://mirrors.aliyun.com/centos" target="_blank" rel="external">http://mirrors.aliyun.com/centos</a></p>
+<p>注意：在[aliyun]这个节点下，需要配置enabled=1生效，否则不生效</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"># The mirror system uses the connecting IP address of the client and the</div><div class="line"># update status of each mirror to pick mirrors that are updated to and</div><div class="line"># geographically close to the client.  You should use this for CentOS updates</div><div class="line"># unless you are manually picking other mirrors.</div><div class="line">#</div><div class="line"># If the mirrorlist= does not work for you, as a fall back you can try the</div><div class="line"># remarked out baseurl= line instead.</div><div class="line">#</div><div class="line">#</div><div class="line"></div><div class="line">[Aliyun]</div><div class="line">name=CentOS-$releasever - Aliyun</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/</div><div class="line">enabled=1</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</div><div class="line"></div><div class="line">#released updates</div><div class="line">[updates]</div><div class="line">name=CentOS-$releasever - Updates</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/updates/$basearch/</div><div class="line">gpgcheck=1</div><div class="line">#additional packages that may be useful</div><div class="line">[extras]</div><div class="line">name=CentOS-$releasever - Extras</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/extras/$basearch/</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</div><div class="line"></div><div class="line">#additional packages that extend functionality of existing packages</div><div class="line">[centosplus]</div><div class="line">name=CentOS-$releasever - Plus</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/centosplus/$basearch/</div><div class="line">gpgcheck=1</div><div class="line">enabled=0</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</div></pre></td></tr></table></figure>
+<ol>
+<li><p>修改完成后使用yum repolist endabled进行验证，结果如下图表示设置成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost yum.repos.d]# yum repolist enabled</div><div class="line">Loaded plugins: fastestmirror</div><div class="line">Repository updates is listed more than once in the configuration</div><div class="line">Repository extras is listed more than once in the configuration</div><div class="line">Repository centosplus is listed more than once in the configuration</div><div class="line">Loading mirror speeds from cached hostfile</div><div class="line"> * base: mirrors.aliyun.com</div><div class="line">repo id                             repo name                             status</div><div class="line">Aliyun/7/x86_64                     CentOS-7 - Aliyun                     9,591</div><div class="line">base/7/x86_64                       CentOS-7 - Base                       9,591</div><div class="line">extras/7/x86_64                     CentOS-7 - Extras                       227</div><div class="line">updates/7/x86_64                    CentOS-7 - Updates                      731</div><div class="line">repolist: 20,140</div><div class="line">[root@localhost yum.repos.d]#</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>​</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://digierp.com/2017/10/13/Centos7安装Mysql数据库/" data-id="cj8q1o9if00017l1ohxtc0qzq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://digierp.com/2017/10/13/Centos7安装Mysql数据库/#comments" id="sourceId::2017/10/13/Centos7安装Mysql数据库/" class="article-comment-link cy_cmt_count">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-修改centos7的yum源" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<a href="/2017/10/13/修改centos7的yum源/" itemprop="url">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507917677023&di=d13872362d7e908250f697eb5906c029&imgtype=jpg&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D499270742%2C3475904403%26fm%3D214%26gp%3D0.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/13/修改centos7的yum源/">修改centos7的yum源</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/13/修改centos7的yum源/">
+            <time datetime="2017-10-13T15:10:43.000Z" itemprop="datePublished">2017-10-13</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Centos7/">Centos7</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="修改centos7的yum源"><a href="#修改centos7的yum源" class="headerlink" title="修改centos7的yum源"></a>修改centos7的yum源</h2><p>​    以下内容，纯属个人笔记，如有问题，欢迎指正，237594169@qq.com</p>
+<ol>
+<li><p>复制/etc/yum.repos.d/Centos-Base.repo文件为Centos-aliyun.repo文件</p>
+</li>
+<li><p>使用喜欢的编辑器打开，进行编辑，注释所有的mirrorlist属性，放开baseurl，将baseurl修改为阿里云的yum源，这个地址可能有变动，亲自行百度，我使用的时候是<a href="http://mirrors.aliyun.com/centos" target="_blank" rel="external">http://mirrors.aliyun.com/centos</a></p>
+<p>注意：在[aliyun]这个节点下，需要配置enabled=1生效，否则不生效</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"># The mirror system uses the connecting IP address of the client and the</div><div class="line"># update status of each mirror to pick mirrors that are updated to and</div><div class="line"># geographically close to the client.  You should use this for CentOS updates</div><div class="line"># unless you are manually picking other mirrors.</div><div class="line">#</div><div class="line"># If the mirrorlist= does not work for you, as a fall back you can try the</div><div class="line"># remarked out baseurl= line instead.</div><div class="line">#</div><div class="line">#</div><div class="line"></div><div class="line">[Aliyun]</div><div class="line">name=CentOS-$releasever - Aliyun</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/</div><div class="line">enabled=1</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</div><div class="line"></div><div class="line">#released updates</div><div class="line">[updates]</div><div class="line">name=CentOS-$releasever - Updates</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/updates/$basearch/</div><div class="line">gpgcheck=1</div><div class="line">#additional packages that may be useful</div><div class="line">[extras]</div><div class="line">name=CentOS-$releasever - Extras</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/extras/$basearch/</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</div><div class="line"></div><div class="line">#additional packages that extend functionality of existing packages</div><div class="line">[centosplus]</div><div class="line">name=CentOS-$releasever - Plus</div><div class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus&amp;infra=$infra</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/$releasever/centosplus/$basearch/</div><div class="line">gpgcheck=1</div><div class="line">enabled=0</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</div></pre></td></tr></table></figure>
+<ol>
+<li><p>修改完成后使用yum repolist endabled进行验证，结果如下图表示设置成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@localhost yum.repos.d]# yum repolist enabled</div><div class="line">Loaded plugins: fastestmirror</div><div class="line">Repository updates is listed more than once in the configuration</div><div class="line">Repository extras is listed more than once in the configuration</div><div class="line">Repository centosplus is listed more than once in the configuration</div><div class="line">Loading mirror speeds from cached hostfile</div><div class="line"> * base: mirrors.aliyun.com</div><div class="line">repo id                             repo name                             status</div><div class="line">Aliyun/7/x86_64                     CentOS-7 - Aliyun                     9,591</div><div class="line">base/7/x86_64                       CentOS-7 - Base                       9,591</div><div class="line">extras/7/x86_64                     CentOS-7 - Extras                       227</div><div class="line">updates/7/x86_64                    CentOS-7 - Updates                      731</div><div class="line">repolist: 20,140</div><div class="line">[root@localhost yum.repos.d]#</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>​</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://digierp.com/2017/10/13/修改centos7的yum源/" data-id="cj8q1o9iq00067l1of0pyn9i2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://digierp.com/2017/10/13/修改centos7的yum源/#comments" id="sourceId::2017/10/13/修改centos7的yum源/" class="article-comment-link cy_cmt_count">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -247,11 +843,11 @@
         
 <div class="article-gallery">
     
-    <a class="gallery-item" href="https://www.hdwallpapers.net/previews/starry-night-over-corsica-986.jpg" rel="gallery_cj8jfrrtf0001841oetm8wpsf">
+    <a class="gallery-item" href="https://www.hdwallpapers.net/previews/starry-night-over-corsica-986.jpg" rel="gallery_cj8q1o9is00087l1ofqc7r7kk">
         <img src="https://www.hdwallpapers.net/previews/starry-night-over-corsica-986.jpg" itemprop="image" />
     </a>
     
-    <a class="gallery-item" href="https://www.hdwallpapers.net/previews/water-plant-close-up-979.jpg" rel="gallery_cj8jfrrtf0001841oetm8wpsf">
+    <a class="gallery-item" href="https://www.hdwallpapers.net/previews/water-plant-close-up-979.jpg" rel="gallery_cj8q1o9is00087l1ofqc7r7kk">
         <img src="https://www.hdwallpapers.net/previews/water-plant-close-up-979.jpg" itemprop="image" />
     </a>
     
@@ -274,7 +870,7 @@
 
 </div>
 
-    <a data-url="http://digierp.com/2017/10/08/test/" data-id="cj8jfrrtf0001841oetm8wpsf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://digierp.com/2017/10/08/test/" data-id="cj8q1o9is00087l1ofqc7r7kk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -351,136 +947,6 @@
 </article>
 
 
-
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/10/08/hello-world/">Hello World</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/10/08/hello-world/">
-            <time datetime="2017-10-08T12:19:50.000Z" itemprop="datePublished">2017-10-08</time>
-        </a>
-    </div>
-
-
-                        
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://digierp.com/2017/10/08/hello-world/" data-id="cj8jfrrt90000841orny0aa24" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://digierp.com/2017/10/08/hello-world/#comments" id="sourceId::2017/10/08/hello-world/" class="article-comment-link cy_cmt_count">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
 </section>
             
                 
@@ -491,6 +957,82 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/13/Keytools使用/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://www.apereo.org/sites/default/files/styles/project_logo/public/projects/logos/cas_max_logo_0.png?itok=uD4hQ5-h)" alt="Keytools使用" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/13/Keytools使用/" class="title">Keytools使用</a></p>
+                            <p class="item-date"><time datetime="2017-10-13T15:20:16.000Z" itemprop="datePublished">2017-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/13/centos7最小安装找不到ifconfig/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1507918524172&amp;di=359b70bffc26e745b86f98c719f84698&amp;imgtype=0&amp;src=http%3A%2F%2Flinux.it.net.cn%2Fuploads%2Fallimg%2F141104%2F2053301b8-0.jpg)" alt="centos7最小安装找不到ifconfig" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/13/centos7最小安装找不到ifconfig/" class="title">centos7最小安装找不到ifconfig</a></p>
+                            <p class="item-date"><time datetime="2017-10-13T15:16:27.000Z" itemprop="datePublished">2017-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/13/Centos7安装Mysql数据库/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1507917773449&amp;di=15898de901f0d997f0e05ccc56c39b22&amp;imgtype=0&amp;src=http%3A%2F%2Fimages.liqucn.com%2Fh018%2Fh88%2Fimg201411221428360219_info300X300.png)" alt="Centos7安装Mysql数据库" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/13/Centos7安装Mysql数据库/" class="title">Centos7安装Mysql数据库</a></p>
+                            <p class="item-date"><time datetime="2017-10-13T15:13:57.000Z" itemprop="datePublished">2017-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/13/修改centos7的yum源/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1508512372&amp;di=b1823dcda1ec5548836e091870fb90bc&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Fimg.ithome.com%2Fnewsuploadfiles%2F2014%2F7%2F20140708_095524_473.png)" alt="修改centos7的yum源" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/13/修改centos7的yum源/" class="title">修改centos7的yum源</a></p>
+                            <p class="item-date"><time datetime="2017-10-13T15:10:43.000Z" itemprop="datePublished">2017-10-13</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -511,25 +1053,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/08/hello-world/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/10/08/hello-world/" class="title">Hello World</a></p>
-                            <p class="item-date"><time datetime="2017-10-08T12:19:50.000Z" itemprop="datePublished">2017-10-08</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -541,7 +1064,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -550,7 +1073,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos7/">Centos7</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos7-数据库/">Centos7,数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS-CAS/">HTTPS,CAS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -559,7 +1082,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/test/" style="font-size: 10px;">test</a>
+            <a href="/tags/Centos7/" style="font-size: 20px;">Centos7</a> <a href="/tags/Centos7-数据库/" style="font-size: 10px;">Centos7,数据库</a> <a href="/tags/HTTPS-CAS/" style="font-size: 10px;">HTTPS,CAS</a> <a href="/tags/test/" style="font-size: 10px;">test</a>
         </div>
     </div>
 
